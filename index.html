@@ -11,17 +11,19 @@
     <form>
         <div class="inputA">
             <label for="inputA">Adicione um valor para A</label>
-            <input type="number" name="inputA" id="inputA">
+            <input type="number" name="inputA" id="inputA" onchange="start()">
         </div>
         <br>
         <div class="inputB">
             <label for="inputB">Adicione um valor para B</label>
-            <input type="number" name="inputB" id="inputB">
+            <input type="number" name="inputB" id="inputB" onchange="start()">
         </div>
     </form>
 
     <h2>Resultados</h2>
-    <div class="inputs"></div>
+    <div class="inputs">
+        <span id="valorSomado"></span>
+    </div>
     <script defer src="./script.js"></script>
 </body>
 </html>
