@@ -8,47 +8,45 @@ function start() {
     globalInputB = getValueOfDefault('#inputB');
     preventFormSubmit();
     valuesFunctions();
-    // activeInput();
     render();
 }
 
-function valuesFunctions() {      
-    var valorSoma = globaNum.Soma(globalInputA, globalInputB);
+function valuesFunctions() {    
+    globalFunctions = [];  
+    var valorSoma = globaNum.soma(globalInputA, globalInputB);
     globalFunctions.push(valorSoma);
-    console.log();
-    activeInput();
     
-    var valorSubtracao = globaNum.Subtracao(globalInputA, globalInputB);
+    var valorSubtracao = globaNum.subtracao(globalInputA, globalInputB);
     globalFunctions.push(valorSubtracao);
 
-    var valorSubtracaoI = globaNum.SubtracaoI(globalInputA, globalInputB);
+    var valorSubtracaoI = globaNum.subtracaoI(globalInputA, globalInputB);
     globalFunctions.push(valorSubtracaoI);
 
-    var valorMult = globaNum.Mult(globalInputA, globalInputB);
+    var valorMult = globaNum.mult(globalInputA, globalInputB);
     globalFunctions.push(valorMult);
 
-    var valorDiv = globaNum.Div(globalInputA, globalInputB);
+    var valorDiv = globaNum.div(globalInputA, globalInputB);
     globalFunctions.push(valorDiv);
 
-    var valorDivI = globaNum.DivI(globalInputA, globalInputB);
+    var valorDivI = globaNum.divI(globalInputA, globalInputB);
     globalFunctions.push(valorDivI);
 
-    var valorQuadradoA = globaNum.QuadradoA(globalInputA);
+    var valorQuadradoA = globaNum.quadradoA(globalInputA);
     globalFunctions.push(valorQuadradoA);
 
-    var valorQuadradoB = globaNum.QuadradoB(globalInputB);
+    var valorQuadradoB = globaNum.quadradoB(globalInputB);
     globalFunctions.push(valorQuadradoB);
 
-    var valorDivisorA = globaNum.DivisorA(globalInputA);
+    var valorDivisorA = globaNum.divisorA(globalInputA);
     globalFunctions.push(valorDivisorA);
 
-    var valorDivisorB = globaNum.DivisorB(globalInputB);
+    var valorDivisorB = globaNum.divisorB(globalInputB);
     globalFunctions.push(valorDivisorB);
 
-    var valorFatorialA = globaNum.FatorialA(globalInputA);
+    var valorFatorialA = globaNum.fatorialA(globalInputA);
     globalFunctions.push(valorFatorialA);
 
-    var valorFatorialB = globaNum.FatorialB(globalInputB);
+    var valorFatorialB = globaNum.fatorialB(globalInputB);
     globalFunctions.push(valorFatorialB);
 }
 
@@ -95,56 +93,27 @@ function render () {
    divNames.appendChild(ul);
 }
 
-function activeInput() {
-    function insertName (newName){
-        // adiciona o valor no globalNames, para consulta console.log(globalNames)
-        globalFunctions.push(newName); 
-        // push empurra o valor para newName
-    } 
-    function updateName(newName) {
-        // Atualizar nome selecionado
-        globalFunctions[currentIndex] = newName;
-    }
-
-    function handleTyping(event){
-        if(event.key === 'Enter'){
-            if (isEditing) {
-                updateName(event.target.value);
-            } else {
-               insertName(event.target.value);
-            }
-            isEditing = false;
-            render();
-        }
-    }
-
-    start.addEventListener('keyup', handleTyping);
-    start.focus();
-    start.addEventListener('keyup', handleTyping);
-    start.focus();
-}
-
-function Soma(a, b) {
+function soma(a, b) {
     var resultValue = a+b;
     return "Valor da A + B = "+ resultValue;
 }
 
-function Subtracao(a, b) {
+function subtracao(a, b) {
     var resultValue = a-b;
     return"Valor de A - B = " + resultValue;   
 }
 
-function SubtracaoI(a, b) {
+function subtracaoI(a, b) {
     var resultValue = b-a;
     return"Valor da B - A = " + resultValue; 
 }
 
-function Mult(a, b) {
+function mult(a, b) {
     var resultValue = a*b;
     return"Valor da A * B = " + resultValue; 
 }
 
-function Div(a, b) {
+function div(a, b) {
     if(b === 0) {
        return "Divisão por 0";       
     } else {
@@ -153,7 +122,7 @@ function Div(a, b) {
 
 }
 
-function DivI(a, b) {
+function divI(a, b) {
     if(a === 0) {
         return "Divisão por 0";       
      } else {
@@ -161,15 +130,15 @@ function DivI(a, b) {
      }
 }
 
-function QuadradoA (a) {
+function quadradoA (a) {
     return"Valor da A² = " + a*a;
 }
 
-function QuadradoB (b) {
+function quadradoB (b) {
     return"Valor da B² = " + b*b;
 }
 
-function DivisorA (a) {
+function divisorA (a) {
     var div = [];
     var num = 0;
     for(i=1; i <= a; i++){
@@ -182,7 +151,7 @@ function DivisorA (a) {
     return"Divisores de A = " + div;
 }
 
-function DivisorB (b) {
+function divisorB (b) {
     var divB = [];
     var numB = 0;
     for(i=1; i <= b; i++){
@@ -195,7 +164,7 @@ function DivisorB (b) {
     return"Divisores de B = " + divB;
 }
 
-function FatorialA (a) {
+function fatorialA (a) {
     if(a<=21){
         if(a<0) {
 
@@ -219,7 +188,7 @@ function FatorialA (a) {
     }
 }
 
-function FatorialB (b) {
+function fatorialB (b) {
     if(b<=21){
         if(b<0) {
 
@@ -244,18 +213,18 @@ function FatorialB (b) {
 }
 
 var globaNum = {
-    Soma: Soma,
-    Subtracao: Subtracao,
-    SubtracaoI: SubtracaoI,
-    Mult: Mult,
-    Div: Div,
-    DivI: DivI,
-    QuadradoA: QuadradoA,
-    QuadradoB: QuadradoB,
-    DivisorA: DivisorA,
-    DivisorB: DivisorB,
-    FatorialA:FatorialA,
-    FatorialB:FatorialB
+    soma: soma,
+    subtracao: subtracao,
+    subtracaoI: subtracaoI,
+    mult: mult,
+    div: div,
+    divI: divI,
+    quadradoA: quadradoA,
+    quadradoB: quadradoB,
+    divisorA: divisorA,
+    divisorB: divisorB,
+    fatorialA:fatorialA,
+    fatorialB:fatorialB
 };
 
 console.log(globalFunctions);
