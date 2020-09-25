@@ -1,8 +1,8 @@
 var globalInputA = null;
 var globalInputB = null;
 var isEditing = false;
-
 var globalFunctions = [];
+
 function start() {
     globalInputA = getValueOfDefault('#inputA');
     globalInputB = getValueOfDefault('#inputB');
@@ -226,7 +226,5 @@ var globaNum = {
     fatorialA:fatorialA,
     fatorialB:fatorialB
 };
-
-console.log(globalFunctions);
 
 start(); 
